@@ -1,3 +1,5 @@
+var temp;
+
 function snake() {
 	//head position
 	this.x = 14;
@@ -7,12 +9,12 @@ function snake() {
 	this.xs = 1;
 	this.ys = 0;
 	this.curDir = RIGHT_ARROW;
-	this.step = 0;
+	this.step = 0;	//step is to prevent quick key presses interactions
 	
 	//the rest of the snake
 	this.body = [];
 	for (var i = 1; i < 5; i ++) {
-		this.body.push(new body(this.x-i,this.y));
+		this.body.push(new body(this.x-5+i,this.y));
 	}
 }
 
@@ -25,12 +27,15 @@ snake.prototype.show = function() {
 
 snake.prototype.slither = function() {
 	this.body.push(new body(this.x,this.y));
-	this.body.shift();
+	temp = this.body.shift();
 		
 	this.x += this.xs;
 	this.y += this.ys;
 	this.step ++;
-	
+}
+
+snake.prototype.grow = function() {
+	this.body.unshift(temp);
 }
 
 snake.prototype.move = function(x,y,k) {
@@ -38,4 +43,19 @@ snake.prototype.move = function(x,y,k) {
 	this.ys = y;	
 	this.curDir = k;
 	this.step = 0;
+}
+
+snake.prototype.updateOccupiedSpaces = function() {
+	var xTemp = [];
+	var yTemp = [];
+	
+	xTemp.push(this.x);
+	yTemp.push(this.y);
+	for (var i = 0; i < this.body.length; i ++) {
+		xTemp.push(this.body[i].x);
+		yTemp.push(this.body[i].y);
+	}
+	
+	xPos = xTemp;
+	yPos = yTemp;
 }
