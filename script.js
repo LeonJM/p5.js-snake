@@ -13,8 +13,8 @@ var ypos = [];
 var gameOver = false;
 
 function setup() {
-	canvasWidth = document.getElementById("x").textContent;
-	canvasHeight = document.getElementById("y").textContent;
+	canvasWidth = parseInt(document.getElementById("x").textContent);
+	canvasHeight = parseInt(document.getElementById("y").textContent);
 	
 	createCanvas(canvasWidth, canvasHeight);
 	frameRate(7);

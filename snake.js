@@ -68,7 +68,7 @@ snake.prototype.collision = function() {
 			gameOver = true;
 		}
 	}
-	if (this.x < 0 || this.y < 0 || this.x >= canvasWidth/w || this.y >= canvasHeight/w) {
+	if (this.x < 0 || this.y < 0 || this.x > canvasWidth/w || this.y > canvasHeight/w) {
 		gameOver = true;
 	}
 }
