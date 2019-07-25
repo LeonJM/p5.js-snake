@@ -1,5 +1,5 @@
-var canvasWidth = 600;
-var canvasHeight = 600;
+var canvasWidth = 300;
+var canvasHeight = 300;
 
 var w = 10;
 
@@ -9,6 +9,8 @@ var apple;
 //occupied spaces
 var xpos = [];
 var ypos = [];
+
+var gameOver = false;
 
 function setup() {
 	createCanvas(canvasWidth, canvasHeight);
@@ -26,6 +28,7 @@ function draw() {
 	fill(255);
 	player.show();
 	player.slither();
+	player.collision();
 	
 	fill(255,0,0);
 	apple.show();
@@ -35,6 +38,17 @@ function draw() {
 		player.grow();
 		player.updateOccupiedSpaces();
 		apple.refresh();
+	}
+	
+	//gameover screen
+	if (gameOver) {
+		fill(120);
+		rect(0,0,canvasWidth,canvasHeight);
+		textAlign(CENTER,CENTER);
+		fill(255,100,100);
+		textSize(30);
+		textStyle(BOLD);
+		text('GAME OVER',canvasWidth/2, canvasHeight/2);
 	}
 }
 

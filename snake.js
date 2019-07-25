@@ -38,6 +38,7 @@ snake.prototype.grow = function() {
 	this.body.unshift(temp);
 }
 
+//change directions
 snake.prototype.move = function(x,y,k) {
 	this.xs = x;
 	this.ys = y;	
@@ -45,6 +46,7 @@ snake.prototype.move = function(x,y,k) {
 	this.step = 0;
 }
 
+//for the fruit spawning
 snake.prototype.updateOccupiedSpaces = function() {
 	var xTemp = [];
 	var yTemp = [];
@@ -58,4 +60,15 @@ snake.prototype.updateOccupiedSpaces = function() {
 	
 	xPos = xTemp;
 	yPos = yTemp;
+}
+
+snake.prototype.collision = function() {
+	for (var i = 0; i < this.body.length; i ++) {
+		if (this.x === this.body[i].x && this.y === this.body[i].y) {
+			gameOver = true;
+		}
+	}
+	if (this.x < 0 || this.y < 0 || this.x >= 60 || this.y >= 60) {
+		gameOver = true;
+	}
 }
