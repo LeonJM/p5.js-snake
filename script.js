@@ -1,5 +1,5 @@
-var canvasWidth = 300;
-var canvasHeight = 300;
+var canvasWidth;
+var canvasHeight;
 
 var w = 10;
 
@@ -13,6 +13,9 @@ var ypos = [];
 var gameOver = false;
 
 function setup() {
+	canvasWidth = document.getElementById("x").textContent;
+	canvasHeight = document.getElementById("y").textContent;
+	
 	createCanvas(canvasWidth, canvasHeight);
 	frameRate(7);
 	
@@ -20,6 +23,8 @@ function setup() {
 	player.updateOccupiedSpaces();
 	
 	apple = new fruit();
+	
+	console.log(canvasWidth + " " + canvasHeight);
 }
 
 function draw() {

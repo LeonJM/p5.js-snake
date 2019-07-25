@@ -4,7 +4,7 @@ Firtsly, I'm suprised I made this in ~3hrs. > yeet.
 
 To play, just download `index.html`, script should link to online raw code.
 
-`canvasWidth` and `canvasHeight` from `index.html` can be adjusted
+`canvasWidth` and `canvasHeight` from `script.js` can be adjusted
 to your preferences as there are no magic numbers in the code.
 
 I think the code is pretty self-explanatory so this readme ain't
