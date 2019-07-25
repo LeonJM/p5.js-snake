@@ -23,8 +23,6 @@ function setup() {
 	player.updateOccupiedSpaces();
 	
 	apple = new fruit();
-	
-	console.log(canvasWidth + " " + canvasHeight);
 }
 
 function draw() {
@@ -69,6 +67,28 @@ function keyPressed() {
 			player.move(-1,0,keyCode);
 		}
 	}
+	
+	if (gameOver) {
+		reset();
+	}
 }
 
+function mousePressed() {
+	if (gameOver) {
+		reser();
+	}
+}
 
+function reset() {
+	canvasWidth = parseInt(document.getElementById("x").textContent);
+	canvasHeight = parseInt(document.getElementById("y").textContent);
+	
+	createCanvas(canvasWidth, canvasHeight);
+	
+	player = new snake();
+	player.updateOccupiedSpaces();
+	
+	apple = new fruit();
+	
+	gameOver = false;
+}
