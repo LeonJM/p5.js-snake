@@ -13,8 +13,8 @@ var ypos = [];
 var gameOver = false;
 
 function setup() {
-	canvasWidth = parseInt(document.getElementById("x").textContent);
-	canvasHeight = parseInt(document.getElementById("y").textContent);
+	canvasWidth = parseInt(document.getElementById("x").value);
+	canvasHeight = parseInt(document.getElementById("y").value);
 	
 	createCanvas(canvasWidth, canvasHeight);
 	frameRate(7);
@@ -75,14 +75,18 @@ function keyPressed() {
 
 function mousePressed() {
 	if (gameOver) {
-		reser();
+		reset();
 	}
 }
 
 function reset() {
-	canvasWidth = parseInt(document.getElementById("x").textContent);
-	canvasHeight = parseInt(document.getElementById("y").textContent);
+	canvasWidth = parseInt(document.getElementById("x").value);
+	canvasHeight = parseInt(document.getElementById("y").value);
 	
+	if (canvasWidth < 200 || canvasHeight < 200) {
+		canvasWidth = 200;
+		canvasHeight = 200;
+	}
 	createCanvas(canvasWidth, canvasHeight);
 	
 	player = new snake();
@@ -91,4 +95,6 @@ function reset() {
 	apple = new fruit();
 	
 	gameOver = false;
+	
+	console.log('reseted');
 }
